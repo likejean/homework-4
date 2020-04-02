@@ -1,11 +1,50 @@
-.jumbotron {
-    text-align: center;
-    background-color: powderblue;
-    border-radius: 3%;
+button.btn {
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem;
+    font-size: 45px;
+    box-shadow: lightseagreen;
+
 }
 
-h1.display-4 {
-    font-size: 50px;
-    padding: 1em;
+span.error {
+    color: red;
+    font-size: 35px;
 }
 
+input.input-fields {
+    border: 2px solid #26a69a !important;
+    border-radius: 15px !important;
+    font-size: 45px !important;
+    padding: 0.5em !important;
+    width: 96% !important;
+
+}
+
+.btn-large {
+    width: 48%;
+    margin: 0px 5px 25px 5px !important;
+    font-size: 40px;
+    border-radius: 15px;
+}
+
+label {
+    font-size: 2rem;
+    color: #26a69a;
+}
+
+.counter {
+    border: 2px solid #26a69a;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.counter-label {
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    border: 2px solid #26a69a;
+    border-radius: 15px;
+    background-color: #26a69a;
+    color: white;
+}

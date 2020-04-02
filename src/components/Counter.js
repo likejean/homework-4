@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import {Button} from 'react-materialize';
+
 
 export default props => {
-    const [ counter, setCounter ] = useState(0);
+    const [counter, setCounter] = useState(0);
+    const posBtn = props.buttonMap;
+    const negBtn = props.buttonMap.reverse();
     const handleButtonClick = e => {
         let step = parseInt(e.target.getAttribute('step'));
         setCounter(counter + step);
     }
     return (
-        <div>
-            {props.leftButtonMap.map(el => <button onClick={handleButtonClick} step={el} name="subtract" key={el}>{el}</button>)}
-            <h1>{counter}</h1>
-            {props.rightButtonMap.map(el => <button onClick={handleButtonClick} step={el} name="add" key={el}>{el}</button>)}
+        <div className="container">
+            <div className="row counter">
+                {negBtn.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
+                                          name="subtract" key={el}>{el}</Button>)}
+                <h1 className="col-2 counter-label">Counter: {counter}</h1>
+                {posBtn.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={-el}
+                                          name="add" key={-el}>{-el}</Button>)}
+
+            </div>
         </div>
     )
 }
