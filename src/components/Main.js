@@ -67,17 +67,13 @@ export default () => {
         }
     }
 
-
-
     const handleSubmit = e => {
         let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
         let arrRight = [];
         let arrLeft = [];
         for (let i = parseInt(rangeLimits.lower); i <= parseInt(rangeLimits.lower) + range; i++){
             arrRight.push(i);
-            console.log(arrRight)
             arrLeft.push(-(parseInt(rangeLimits.lower) + parseInt(rangeLimits.lower) + range - i));
-            console.log(arrLeft);
         }
         range >= 0 ?
             setButtonMap({lower: arrLeft, upper: arrRight})
