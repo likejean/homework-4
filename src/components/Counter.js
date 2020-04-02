@@ -6,10 +6,14 @@ export default props => {
     const [counter, setCounter] = useState(0);
     const posBtn = props.buttonMap;
     const negBtn = props.buttonMap.reverse();
+
     const handleButtonClick = e => {
         let step = parseInt(e.target.getAttribute('step'));
         setCounter(counter + step);
-        if (props.resetClick) props.setResetClick(false);
+        if (props.resetClick) {
+            props.setResetClick(false);
+            setCounter(0);
+        }
     }
     return (
         <div className="container">
