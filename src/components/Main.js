@@ -15,7 +15,7 @@ export default () => {
                 lower: false
             }
         });
-    const [ buttonMap, setButtonMap ] = useState([1]);
+    const [ buttonMap, setButtonMap ] = useState({lower: [-1], upper: [1]});
     const [ error, setError ] = useState('');
 
     const handleRangeChange = e => {
@@ -71,8 +71,16 @@ export default () => {
 
     const handleSubmit = e => {
         let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
+        let arrRight = [];
+        let arrLeft = [];
+        for (let i = rangeLimits.lower; i <= rangeLimits.lower + range; i++){
+            arrRight.push(i);
+            arrLeft.push(i - rangeLimits.lower - range - 1)
+            console.log(arrRight, arrLeft);
+        }
         range >= 0 ?
-            setButtonMap(Array(range + 1).fill().map((__, idx) => parseInt(rangeLimits.lower) + idx))
+            setButtonMap({lower: arrLeft, upper: arrRight})
+            //setButtonMap(Array(range + 1).fill().map((__, idx) => parseInt(rangeLimits.lower) + idx))
             :
             setError('Invalid Inputs! Check if Upper Limit is Greater than Lower Limit');
         e.preventDefault();
