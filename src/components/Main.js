@@ -17,7 +17,6 @@ export default () => {
         });
     const [ buttonMap, setButtonMap ] = useState([1]);
     const [ error, setError ] = useState('');
-    const [ resetClick, setResetClick ] = useState(false);
 
     const handleRangeChange = e => {
         const { name, value } = e.target;
@@ -67,26 +66,25 @@ export default () => {
             default:
                 break;
         }
+        e.preventDefault();
     }
 
-    const handleCounterReset = () => setResetClick(true);
 
-    const handleSubmit = () => {
+
+    const handleSubmit = e => {
         let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
         range >= 0 ?
             setButtonMap(Array(range + 1).fill().map((__, idx) => parseInt(rangeLimits.lower) + idx))
             :
             setError('Invalid Inputs! Check if Upper Limit is Greater than Lower Limit');
+        e.preventDefault();
     }
     const props = {
         rangeLimits: rangeLimits,
         buttonMap: buttonMap,
         error: error,
-        resetClick: resetClick,
-        setResetClick: setResetClick,
         handleRangeChange: handleRangeChange,
-        handleSubmit: handleSubmit,
-        handleCounterReset: handleCounterReset
+        handleSubmit: handleSubmit
     }
     return (
         <React.Fragment>

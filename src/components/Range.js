@@ -1,8 +1,7 @@
 import React from 'react';
-import {Button, TextInput} from 'react-materialize';
+import { Button } from 'react-materialize';
 
 export default props => {
-    console.log()
     return (
         <div id="inputs" className='container'>
             <label>From: </label>
@@ -35,16 +34,16 @@ export default props => {
                 type="submit"
                 onClick={ props.handleSubmit }
             >SUBMIT</Button>
-            <Button
-                large
-                node="a"
-                style={{
-                    margin: 5
-                }}
-                waves="light"
-                type="submit"
-                onClick={ props.handleCounterReset }
-            >RESET</Button>
+            {/*<Button*/}
+            {/*    large*/}
+            {/*    node="a"*/}
+            {/*    style={{*/}
+            {/*        margin: 5*/}
+            {/*    }}*/}
+            {/*    waves="light"*/}
+            {/*    type="submit"*/}
+            {/*    onClick={ props.handleCounterReset }*/}
+            {/*>RESET</Button>*/}
         </div>
     )
 }
