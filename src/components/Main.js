@@ -73,14 +73,14 @@ export default () => {
         let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
         let arrRight = [];
         let arrLeft = [];
-        for (let i = rangeLimits.lower; i <= rangeLimits.lower + range; i++){
+        for (let i = parseInt(rangeLimits.lower); i <= parseInt(rangeLimits.lower) + range; i++){
             arrRight.push(i);
-            arrLeft.push(i - rangeLimits.lower - range - 1)
-            console.log(arrRight, arrLeft);
+            console.log(arrRight)
+            arrLeft.push(-(parseInt(rangeLimits.lower) + parseInt(rangeLimits.lower) + range - i));
+            console.log(arrLeft);
         }
         range >= 0 ?
             setButtonMap({lower: arrLeft, upper: arrRight})
-            //setButtonMap(Array(range + 1).fill().map((__, idx) => parseInt(rangeLimits.lower) + idx))
             :
             setError('Invalid Inputs! Check if Upper Limit is Greater than Lower Limit');
         e.preventDefault();

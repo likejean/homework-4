@@ -4,7 +4,7 @@ import { Button } from 'react-materialize';
 export default props => {
     return (
         <div id="inputs" className='container'>
-            <label>From: </label>
+            <label>Lower Limit: </label>
             <input
                 className='input-fields'
                 type="text"
@@ -13,8 +13,8 @@ export default props => {
                 onChange={ props.handleRangeChange }
                 disabled = { props.rangeLimits.fieldStatus.lower }
             />
-            {<span className='error'>   {props.rangeLimits.errors.lower}</span>}<br></br>
-            <label>To: </label>
+            {<span className='error'>{props.rangeLimits.errors.lower}</span>}<br></br>
+            <label>Upper Limit: </label>
             <input
                 className='input-fields'
                 type="text"
@@ -23,7 +23,7 @@ export default props => {
                 onChange={ props.handleRangeChange }
                 disabled = { props.rangeLimits.fieldStatus.upper }
             />
-            {<span className='error'>   {props.rangeLimits.errors.upper}</span>}<br></br>
+            {<span className='error'>{props.rangeLimits.errors.upper}</span>}<br></br>
             <Button
                 large
                 node="a"
