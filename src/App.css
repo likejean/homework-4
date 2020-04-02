@@ -40,11 +40,21 @@ label {
     padding: 25px;
 }
 
-.counter-label {
+.counter-container {
     margin: 20px 0px 20px 0px;
     padding: 20px;
     border: 2px solid #26a69a;
     border-radius: 15px;
     background-color: #26a69a;
     color: white;
+}
+
+#reset-button {
+    background-color: white;
+    color: #26a69a;
+}
+
+.counter-label {
+    width: 75%;
+    margin: 25px;
 }

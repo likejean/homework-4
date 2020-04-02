@@ -34,16 +34,6 @@ export default props => {
                 type="submit"
                 onClick={ props.handleSubmit }
             >SUBMIT</Button>
-            {/*<Button*/}
-            {/*    large*/}
-            {/*    node="a"*/}
-            {/*    style={{*/}
-            {/*        margin: 5*/}
-            {/*    }}*/}
-            {/*    waves="light"*/}
-            {/*    type="submit"*/}
-            {/*    onClick={ props.handleCounterReset }*/}
-            {/*>RESET</Button>*/}
         </div>
     )
 }

@@ -61,12 +61,10 @@ export default () => {
                         ? true
                         : false
                 ;
-
                 break;
             default:
                 break;
         }
-        e.preventDefault();
     }
 
 
