@@ -43,7 +43,7 @@ export default props => {
                 }}
                 waves="light"
                 type="submit"
-                onClick={ props.handleSubmit }
+                onClick={ props.handleCounterReset }
             >RESET</Button>
         </div>
     )

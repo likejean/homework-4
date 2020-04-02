@@ -9,13 +9,14 @@ export default props => {
     const handleButtonClick = e => {
         let step = parseInt(e.target.getAttribute('step'));
         setCounter(counter + step);
+        if (props.resetClick) props.setResetClick(false);
     }
     return (
         <div className="container">
             <div className="row counter">
                 {negBtn.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
                                           name="subtract" key={el}>{el}</Button>)}
-                <h1 className="col-2 counter-label">Counter: {counter}</h1>
+                <h1 className="col-2 counter-label">Counter: {props.resetClick ? 0 : counter}</h1>
                 {posBtn.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={-el}
                                           name="add" key={-el}>{-el}</Button>)}
 

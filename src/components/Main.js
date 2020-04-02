@@ -14,10 +14,10 @@ export default () => {
                 upper: false,
                 lower: false
             }
-
         });
     const [ buttonMap, setButtonMap ] = useState([1]);
     const [ error, setError ] = useState('');
+    const [ resetClick, setResetClick ] = useState(false);
 
     const handleRangeChange = e => {
         const { name, value } = e.target;
@@ -26,10 +26,15 @@ export default () => {
         setRangeLimits({ ...rangeLimits, [ name ]: value });
         let tempUpper = rangeLimits[ "upper" ];
         let tempLower = rangeLimits[ "lower" ];
+
+        //User Error Validation
+
         switch (name) {
             case 'upper':
                 errors.upper =
-                    parseInt(value) >= 10
+                    isNaN(value) || Number.isInteger(value)
+                    ? 'ERROR! Input must be an INTEGER'
+                    : parseInt(value) >= 10
                         ? 'ERROR! Must be less than 10'
                         : parseInt(value) < tempLower
                             ? 'ERROR! Upper Limit Must be GREATER than Lower Limit'
@@ -44,7 +49,9 @@ export default () => {
                 break;
             case 'lower':
                 errors.lower =
-                    parseInt(value) < 1
+                    isNaN(value) || Number.isInteger(value)
+                    ? 'ERROR! Input must be an INTEGER'
+                    : parseInt(value) < 1
                         ? 'ERROR! Must be greater than zero'
                         : parseInt(value) > tempUpper
                             ? 'ERROR! Lower Limit Must be Less than Upper Limit'
@@ -62,6 +69,8 @@ export default () => {
         }
     }
 
+    const handleCounterReset = () => setResetClick(true);
+
     const handleSubmit = () => {
         let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
         range >= 0 ?
@@ -73,8 +82,11 @@ export default () => {
         rangeLimits: rangeLimits,
         buttonMap: buttonMap,
         error: error,
+        resetClick: resetClick,
+        setResetClick: setResetClick,
         handleRangeChange: handleRangeChange,
-        handleSubmit: handleSubmit
+        handleSubmit: handleSubmit,
+        handleCounterReset: handleCounterReset
     }
     return (
         <React.Fragment>
