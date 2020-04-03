@@ -1,30 +1,33 @@
 import React from 'react';
 import { Button } from 'react-materialize';
 
-export default props => {
+export default ({ rangeLimits, handleRangeChange, handleSubmit }) => {
     return (
         <div id="inputs" className='container'>
             <label>Lower Limit: </label>
             <input
                 className='input-fields'
+                data-testid="limit-input"
                 type="text"
                 name="lower"
-                value={ props.rangeLimits.lower }
-                onChange={ props.handleRangeChange }
-                disabled = { props.rangeLimits.fieldStatus.lower }
+                value={ rangeLimits.lower }
+                onChange={ handleRangeChange }
+                disabled = { rangeLimits.fieldStatus.lower }
             />
-            {<span className='error'>{props.rangeLimits.errors.lower}</span>}<br></br>
+            {<span className='error'>{ rangeLimits.errors.lower }</span>}<br></br>
             <label>Upper Limit: </label>
             <input
                 className='input-fields'
+                data-testid="limit-input"
                 type="text"
                 name="upper"
-                value={ props.rangeLimits.upper }
-                onChange={ props.handleRangeChange }
-                disabled = { props.rangeLimits.fieldStatus.upper }
+                value={ rangeLimits.upper }
+                onChange={ handleRangeChange }
+                disabled = { rangeLimits.fieldStatus.upper }
             />
-            {<span className='error'>{props.rangeLimits.errors.upper}</span>}<br></br>
+            {<span className='error'>{ rangeLimits.errors.upper }</span>}<br></br>
             <Button
+                data-testid="submit-button"
                 large
                 node="a"
                 style={{
@@ -32,7 +35,7 @@ export default props => {
                 }}
                 waves="light"
                 type="submit"
-                onClick={ props.handleSubmit }
+                onClick={ handleSubmit }
             >SUBMIT</Button>
         </div>
     )

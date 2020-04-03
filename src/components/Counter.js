@@ -1,21 +1,20 @@
 import React, {useState} from 'react';
-import {Button} from 'react-materialize';
+import { Button } from 'react-materialize';
 
 
-export default props => {
+export default ({ buttonMap }) => {
     const [counter, setCounter] = useState(0);
 
     const handleButtonClick = e => {
         let step = parseInt(e.target.getAttribute('step'));
         setCounter(counter + step);
-
     }
     const handleResetClick = e => setCounter(0);
 
     return (
         <div className="container">
             <div className="row counter">
-                {props.buttonMap.lower.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
+                {buttonMap.lower.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
                                           name="subtract" key={el}>{el}</Button>)}
                 <div className="counter-container row">
                     <h2 className="col-2 counter-label">Counter: {counter}</h2>
@@ -29,9 +28,11 @@ export default props => {
                         waves="light"
                         type="submit"
                         onClick={handleResetClick}
-                    >RESET</Button>
+                    >
+                        RESET COUNTER
+                    </Button>
                 </div>
-                {props.buttonMap.upper.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
+                {buttonMap.upper.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
                                           name="add" key={el}>{el}</Button>)}
             </div>
         </div>

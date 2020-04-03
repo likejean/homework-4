@@ -1,0 +1,10 @@
+import React from 'react';
+
+export default () => {
+    return (
+        <div style={{ textAlign: 'center' }}>
+            <hr></hr>
+            <span style={{ fontSize: 45, color: '#26a69a' }}>Phone Number: 1-800-101-4444</span>
+        </div>
+    )
+}

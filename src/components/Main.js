@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Range from './Range';
 import Counter from './Counter';
+import Footer from './Footer';
 
-export default () => {
+export default ({ name }) => {
     const [ rangeLimits, setRangeLimits ] = useState({
             lower : 1,
             upper : 1,
@@ -90,8 +91,11 @@ export default () => {
     }
     return (
         <React.Fragment>
+            <h1 style={{ textAlign: 'center', color: '#26a69a' }}>{ name }</h1>
+            <hr></hr>
             <Range {...props}/>
             <Counter {...props}/>
+            <Footer/>
         </React.Fragment>
     )
 }
