@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-materialize';
 
 export default ({ rangeLimits, handleRangeChange, handleSubmit }) => {
     return (
@@ -26,17 +25,6 @@ export default ({ rangeLimits, handleRangeChange, handleSubmit }) => {
                 disabled = { rangeLimits.fieldStatus.upper }
             />
             {<span className='error'>{ rangeLimits.errors.upper }</span>}<br></br>
-            <Button
-                data-testid="submit-button"
-                large
-                node="a"
-                style={{
-                    margin: 5
-                }}
-                waves="light"
-                type="submit"
-                onClick={ handleSubmit }
-            >SUBMIT</Button>
         </div>
     )
 }

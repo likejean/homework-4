@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { Button } from 'react-materialize';
+import _ from 'lodash';
 
 
-export default ({ buttonMap }) => {
+export default ({ buttonMap, rangeLimits }) => {
     const [counter, setCounter] = useState(0);
 
     const handleButtonClick = e => {
@@ -14,7 +15,7 @@ export default ({ buttonMap }) => {
     return (
         <div className="container">
             <div className="row counter">
-                {buttonMap.lower.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
+                {rangeLimits.lower && rangeLimits.upper && _.range(+rangeLimits.lower, +rangeLimits.upper + 1, 1).map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
                                           name="subtract" key={el}>{el}</Button>)}
                 <div className="counter-container row">
                     <h2 className="col-2 counter-label">Counter: {counter}</h2>
@@ -32,8 +33,8 @@ export default ({ buttonMap }) => {
                         RESET COUNTER
                     </Button>
                 </div>
-                {buttonMap.upper.map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={el}
-                                          name="add" key={el}>{el}</Button>)}
+                {rangeLimits.lower && rangeLimits.upper && _.range(+rangeLimits.lower, +rangeLimits.upper + 1, 1).map(el => <Button className="col-5 z-depth-3" onClick={handleButtonClick} step={-el}
+                                          name="add" key={el}>{-el}</Button>)}
             </div>
         </div>
     )

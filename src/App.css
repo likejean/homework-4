@@ -58,4 +58,5 @@ label {
 .counter-label {
     width: 75%;
     margin: 25px;
+    text-align: center;
 }

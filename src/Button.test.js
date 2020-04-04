@@ -47,12 +47,6 @@ describe("Counter Component", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('outputs html markup result correctly', () => {
-        const wrapper = render(
-            <Counter { ...props } />
-        );
-        expect(wrapper).toMatchSnapshot();
-    });
 
     it('outputs html markup result correctly', () => {
         const wrapper = render(
@@ -60,16 +54,6 @@ describe("Counter Component", () => {
         );
         const text = wrapper.find('h2.counter-label').text();
         expect(text).toBe('Counter: 0');
-    });
-
-    it('calls "handleCounterReset" on button click', () => {
-        const wrapper = shallow(
-            <Counter { ...props } />
-        );
-        expect(wrapper).toMatchSnapshot();
-
-        wrapper.find('#reset-button').simulate('click');
-        expect(props.spy.calledOnce).toBe(true);
     });
 
 });

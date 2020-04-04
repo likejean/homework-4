@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Range from './Range';
 import Counter from './Counter';
-import Footer from './Footer';
+
 
 export default ({ name }) => {
     const [ rangeLimits, setRangeLimits ] = useState({
@@ -26,22 +26,37 @@ export default ({ name }) => {
         setRangeLimits({ ...rangeLimits, [ name ]: value });
         let tempUpper = rangeLimits[ "upper" ];
         let tempLower = rangeLimits[ "lower" ];
+        validation (name, value, fieldStatus, tempUpper, tempLower, errors);
+
+        let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
+        let arrRight = [];
+        let arrLeft = [];
+        for (let i = parseInt(rangeLimits.lower); i <= parseInt(rangeLimits.lower) + range; i++){
+            arrRight.push(i);
+            arrLeft.push(-(parseInt(rangeLimits.lower) + parseInt(rangeLimits.lower) + range - i));
+        }
+        range >= 0 ?
+            setButtonMap({lower: arrLeft, upper: arrRight})
+            :
+            setError('Invalid Inputs! Check if Upper Limit is Greater than Lower Limit');
 
         //User Error Validation
+    }
 
+    const validation =  (name, value, fieldStatus, tempUpper, tempLower, errors) => {
         switch (name) {
             case 'upper':
                 errors.upper =
                     isNaN(value) || Number.isInteger(value)
-                    ? 'ERROR! Input must be an INTEGER'
-                    : parseInt(value) >= 10
+                        ? 'ERROR! Input must be an INTEGER'
+                        : parseInt(value) >= 10
                         ? 'ERROR! Must be less than 10'
                         : parseInt(value) < tempLower
                             ? 'ERROR! Upper Limit Must be GREATER than Lower Limit'
                             : ''
                 ;
                 fieldStatus.lower =
-                        parseInt(value) < tempLower
+                    parseInt(value) < tempLower
                         ? true
                         : false
                 ;
@@ -50,8 +65,8 @@ export default ({ name }) => {
             case 'lower':
                 errors.lower =
                     isNaN(value) || Number.isInteger(value)
-                    ? 'ERROR! Input must be an INTEGER'
-                    : parseInt(value) < 1
+                        ? 'ERROR! Input must be an INTEGER'
+                        : parseInt(value) < 1
                         ? 'ERROR! Must be greater than zero'
                         : parseInt(value) > tempUpper
                             ? 'ERROR! Lower Limit Must be Less than Upper Limit'
@@ -68,26 +83,12 @@ export default ({ name }) => {
         }
     }
 
-    const handleSubmit = e => {
-        let range = parseInt(rangeLimits.upper) - parseInt(rangeLimits.lower);
-        let arrRight = [];
-        let arrLeft = [];
-        for (let i = parseInt(rangeLimits.lower); i <= parseInt(rangeLimits.lower) + range; i++){
-            arrRight.push(i);
-            arrLeft.push(-(parseInt(rangeLimits.lower) + parseInt(rangeLimits.lower) + range - i));
-        }
-        range >= 0 ?
-            setButtonMap({lower: arrLeft, upper: arrRight})
-            :
-            setError('Invalid Inputs! Check if Upper Limit is Greater than Lower Limit');
-        e.preventDefault();
-    }
+
     const props = {
         rangeLimits: rangeLimits,
         buttonMap: buttonMap,
         error: error,
-        handleRangeChange: handleRangeChange,
-        handleSubmit: handleSubmit
+        handleRangeChange: handleRangeChange
     }
     return (
         <React.Fragment>
@@ -95,7 +96,7 @@ export default ({ name }) => {
             <hr></hr>
             <Range {...props}/>
             <Counter {...props}/>
-            <Footer/>
+
         </React.Fragment>
     )
 }
